@@ -1,6 +1,6 @@
 import random
 
-def tas_kagit_makas_ADINIZ_SOYADINIZ():
+def tas_kagit_makas_MEHMETEMİN_KÖKÇAN():
     # Oyun Tanıtımı
     print("Taş, Kağıt, Makas Oyununa Hoşgeldiniz!")
     print("Kurallar: Taş makası yener, makas kağıdı yener, kağıt taşı yener.")
@@ -60,4 +60,4 @@ def tas_kagit_makas_ADINIZ_SOYADINIZ():
             break
 
 # Fonksiyonu çağırarak oyunu başlatın
-tas_kagit_makas_ADINIZ_SOYADINIZ()
+tas_kagit_makas_MEHMETEMİN_KÖKÇAN()
