@@ -1,162 +1,63 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+import random
 
-# C extensions
-*.so
+def tas_kagit_makas_ADINIZ_SOYADINIZ():
+    # Oyun Tanıtımı
+    print("Taş, Kağıt, Makas Oyununa Hoşgeldiniz!")
+    print("Kurallar: Taş makası yener, makas kağıdı yener, kağıt taşı yener.")
+    print("İlk iki turu kazanan oyunu kazanır.")
+    print("Oyundan çıkmak için 'q' tuşuna basın.\n")
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+    # Oyun Kurulumu
+    secenekler = ["taş", "kağıt", "makas"]
+    oyuncu_galibiyeti = 0
+    bilgisayar_galibiyeti = 0
+    tur_sayisi = 0
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+    # Oyunun Ana Döngüsü
+    while True:
+        oyuncu_galibiyeti = 0
+        bilgisayar_galibiyeti = 0
+        tur_sayisi = 0
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+        # Turların Döngüsü
+        while oyuncu_galibiyeti < 2 and bilgisayar_galibiyeti < 2:
+            oyuncu_secimi = input("Taş, kağıt, makas seçin (çıkmak için 'q'): ").lower()
+            if oyuncu_secimi == 'q':
+                print("Oyundan çıkılıyor...")
+                return
+            
+            if oyuncu_secimi not in secenekler:
+                print("Geçersiz seçim, lütfen taş, kağıt veya makas seçin.")
+                continue
+            
+            bilgisayar_secimi = random.choice(secenekler)
+            print(f"Bilgisayarın seçimi: {bilgisayar_secimi}")
+            
+            if oyuncu_secimi == bilgisayar_secimi:
+                print("Berabere!")
+            elif (oyuncu_secimi == "taş" and bilgisayar_secimi == "makas") or \
+                 (oyuncu_secimi == "makas" and bilgisayar_secimi == "kağıt") or \
+                 (oyuncu_secimi == "kağıt" and bilgisayar_secimi == "taş"):
+                print("Tur kazandınız!")
+                oyuncu_galibiyeti += 1
+            else:
+                print("Bilgisayar turu kazandı!")
+                bilgisayar_galibiyeti += 1
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+            tur_sayisi += 1
+            print(f"Durum: Oyuncu {oyuncu_galibiyeti} - {bilgisayar_galibiyeti} Bilgisayar\n")
+        
+        # Oyun Galibini Belirleme
+        if oyuncu_galibiyeti == 2:
+            print("Tebrikler, oyunu kazandınız!")
+        else:
+            print("Maalesef, bilgisayar oyunu kazandı!")
+        
+        # Devam Etme İsteği
+        devam = input("Tekrar oynamak ister misiniz? (e/h): ").lower()
+        if devam != 'e':
+            print("Oyun sonlandırılıyor...")
+            break
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
-.pdm.toml
-.pdm-python
-.pdm-build/
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+# Fonksiyonu çağırarak oyunu başlatın
+tas_kagit_makas_ADINIZ_SOYADINIZ()
